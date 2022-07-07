@@ -1,22 +1,12 @@
 import math
+from expressoes import expressoes
 
-expressoes = {
-    'e1': '-x + 2*math.exp(-x)',
-    'e2': 'x**2 - math.cos(x)',
-    'e3': '4*math.cos(x) - math.cosh(x)',
-    'e4': 'math.log(x) + x*(x**0.5)',
-    'e5': 'x**2 - 2',
-    'e6': '3*(x**0.5) + math.log(x) - 4'
-}
+def bissecao(intervaloInicio, intervaloFim, precisao, key):
 
-def expressao(x):
-    return eval(expressoes['e6'])
+    def expressao(x):
+        return eval(expressoes[key])
 
-def calculaRaiz():
     contador = 0
-    intervaloInicio = float(input("Insira o inicio do intervalo de varredura = "))
-    intervaloFim = float(input("Insira o fim do intervalo de varredura = "))
-    precisao = 0.00001
 
     while True:
         contador += 1
@@ -35,7 +25,5 @@ def calculaRaiz():
             elif resultadoMedio * resultadoFim < 0:
                 intervaloInicio = x
 
-    print(f'\nRaiz: {raiz}\nNúmero de iterações: {contador}')
-    return raiz
-
-calculaRaiz()
+    print('\nMétodo Bisseção')
+    print(f'Raiz: {raiz}\nNúmero de iterações: {contador}')
