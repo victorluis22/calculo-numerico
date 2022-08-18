@@ -17,7 +17,6 @@ def P(x, inicio, fim, parciais):
 
 
 def lagrange():
-
     cont = 1
     x = float(input("Insira o x que se deseja aproximar: "))
     
@@ -25,7 +24,8 @@ def lagrange():
     for indice in range(len(abscissas)-cont):
         p1 = P1(x, indice, indice+cont)
         lagrange_parcial.append(p1)
-        resultados.append(p1)
+
+    resultados.append(lagrange_parcial[:])
 
     while len(lagrange_parcial) != 1:
         cont += 1 
@@ -33,18 +33,21 @@ def lagrange():
         for indice in range(len(lagrange_parcial)-1):
             p = P(x, abscissas[indice], abscissas[indice+cont], [lagrange_parcial[indice], lagrange_parcial[indice+1]])
             aux.append(p)
-            resultados.append(p)
-        
+
+        resultados.append(aux[:])
         lagrange_parcial.clear()
         lagrange_parcial.extend(aux)
         aux.clear()
 
-    print(resultados)
-
-    
-    
-
 lagrange()
+
+
+print("\n==== Resultados ====\n\n")
+for i in range(len(resultados)):
+    print(f'P{i+1}(x) = {resultados[i]}')
+print("\n")
+
+        
 
 
 
